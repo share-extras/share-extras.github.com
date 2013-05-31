@@ -1,0 +1,27 @@
+---
+---
+<!doctype html>
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include nav.html %}
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          {% include addon-side.html %}
+        </div><!--/span-->
+        <div class="span9">
+          {% capture readme_content %}{% include addons/media-viewers/README.md %}{% endcapture %}
+          {{ readme_content | markdownify | split:'Download' | first }}
+          {% include addon-more.html %}
+        </div><!--/span-->
+      </div><!--/row-->
+      {% include footer.html %}
+    </div><!--/.fluid-container-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <a href="https://github.com/share-extras/{{page.projectname}}"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1032;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+  </body>
+</html>
