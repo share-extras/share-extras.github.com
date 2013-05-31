@@ -14,8 +14,7 @@
           {% include addon-side.html %}
         </div><!--/span-->
         <div class="span9">
-          {% capture readme_content %}{% include addons/media-viewers/README.md %}{% endcapture %}
-          {{ readme_content | markdownify | split:'Download' | first }}
+          {{ content | markdownify | split:'Download' | first }}
           {% include addon-more.html %}
         </div><!--/span-->
       </div><!--/row-->
