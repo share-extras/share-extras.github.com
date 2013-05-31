@@ -11,7 +11,7 @@ layout: default
 <div class="row-fluid">
   {% assign pcount = 0 %}
   {% for page in site.pages %}
-  {% if page.category == "addon" %}
+  {% if page.category == "addon" and page.projectdesc|size > 0 and page.projectname != 'share-extras.github.com' %}
   {% assign pcount =  pcount | plus:1 %}
   {% capture moduloo %}{{ pcount | modulo:3 }}{% endcapture %}
   <div class="span4">
