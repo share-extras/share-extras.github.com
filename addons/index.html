@@ -1,5 +1,25 @@
 ---
 title: Share Extras - Addons
-layout: list
+layout: default
 ---
-<p>Blah</p>
+<div class="row-fluid">
+<h1>Add-ons</h1>
+</div>
+<div class="row-fluid">
+  {% assign pcount = 0 %}
+  {% for page in site.pages %}
+  {% if page.category == "addon" %}
+  {% assign pcount =  pcount | plus:1 %}
+  {% capture moduloo %}{{ pcount | modulo:3 }}{% endcapture %}
+  <div class="span4">
+    <h2>{{ page.projecttitle }}</h2>
+    <p>{{ page.projectdesc }}</p>
+    <p><a class="btn" href="{{ page.projectname }}/">View details &raquo;</a></p>
+  </div><!--/span-->
+    {% if moduloo == '0' %}
+    </div>
+    <div class="row-fluid">
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+</div><!--/row-->
