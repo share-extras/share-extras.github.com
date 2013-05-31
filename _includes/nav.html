@@ -10,7 +10,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">{{ page.path }}
           <li {% if page.path == 'index.html' %} class="active"{% endif %}><a href="/">Home</a></li>
-          <li {% if page.path == 'addons/index.html' %} class="active"{% endif %}><a href="/addons/">Add-ons</a></li>
+          <li {% if page.path contains 'addons' %} class="active"{% endif %}><a href="/addons/">Add-ons</a></li>
           <li {% if page.path == 'help/index.html' %} class="active"{% endif %}><a href="/help/">Help</a></li>
           <li {% if page.path == 'contribute/index.html' %} class="active"{% endif %}><a href="/contribute/">Contribute</a></li>
         </ul>
