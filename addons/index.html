@@ -5,21 +5,32 @@ layout: default
 <div class="row-fluid">
 <h1>Add-ons</h1>
 </div>
-<div class="row-fluid">
   {% assign pcount = 0 %}
+  {% assign page_orderings = "" %}
   {% for page in site.pages %}
   {% if page.category == "addon" and page.projectdesc|size > 0 and page.projectname != 'share-extras.github.com' %}
+    {% assign page_orderings = page_orderings | append:page.pushed_at | append:'|' | append:page.projecttitle | append:',' %}
+  {% endif %}
+  {% endfor %}
+  {% assign po_array = page_orderings | split:','|sort %}
+<div class="row-fluid">
+  {% for pageindex in po_array reversed %}
+  {% assign po_arr = pageindex|split:'|' %}
+  {% assign po_name = po_arr[1] %}
+  {% for page in site.pages %}
+  {% if page.projectname == po_name %}
   {% assign pcount =  pcount | plus:1 %}
   {% capture moduloo %}{{ pcount | modulo:3 }}{% endcapture %}
   <div class="span4">
     <h2>{{ page.projecttitle }}</h2>
     <p>{{ page.projectdesc }}</p>
-    <p><a class="btn" href="{{ page.projectname }}/">View details &raquo;</a></p>
+    <p><a class="btn" href="addons/{{ page.projectname }}/">View details &raquo;</a></p>
   </div><!--/span-->
     {% if moduloo == '0' %}
     </div>
     <div class="row-fluid">
     {% endif %}
   {% endif %}
+  {% endfor %}
   {% endfor %}
 </div><!--/row-->
