@@ -4,4 +4,83 @@ layout: default
 ---
 <div class="row-fluid">
 <h1>Contribute</h1>
+<p>Anyone can help contribute to Share Extras by trying out the existing add-ons and providing 
+feedback via the Issues section within the relevant project.</p>
+
+<h2><a name="Enhancements"></a>Enhancements<a href="#Enhancements" class="section_anchor"></a></h2>
+
+<p>An enhancement to an existing add-on may be a new feature, a translation in your local language 
+or a fix for a specific issue. </p>
+
+<p>If you have an idea for an enhancement that would benefit you or are willing to implement an 
+enhancement yourself, please start by checking in the Issues section to see if anyone else has logged 
+something similar. If not, you can add a new Issue of type <strong>Enhancement request</strong>.</p>
+
+<p>By submitting any additional code, configuration or documentation, you agree to license the content 
+under the current project license. At the time of writing this is the 
+<a href="http://www.apache.org/licenses/LICENSE-2.0" rel="nofollow">Apache License 2.0</a>. </p>
+
+<h2><a name="New_Add-ons"></a>New Add-ons<a href="#New_Add-ons" class="section_anchor"></a></h2>
+
+<p>Ideas for new add-ons can also be submitted as Enhancement requests. You are also recommended 
+to send an email to the <a href="http://groups.google.com/group/share-extras-devel" rel="nofollow">development list</a>.
+</p>
+
+<p>If you have already created the add-on yourself you are encouraged to push it to a public Git
+repository, such as GitHub. Please provide the URL of the repository in the enhancement request. </p>
+
+<p>The Project Leader(s) will decide whether a new add-on should be accepted. If accepted, a new
+project will be created within the share-extras organisation on GitHub and the existing code should
+be merged there.</p>
+
+<p>By submitting code, configuration or documentation for your add-on, you agree to license the 
+content under the current project license. At the time of writing this is the 
+<a href="http://www.apache.org/licenses/LICENSE-2.0" rel="nofollow">Apache License 2.0</a>. You 
+must have the authority to release your content under this license, but note this does not affect 
+ownership of the content. </p>
+
+<h3><a name="Top-Level_Add-ons"></a>Top-Level Add-ons<a href="#Top-Level_Add-ons" class="section_anchor"></a></h3>
+
+<p>Once an add-on is considered sufficiently mature, it can be promoted to a top-level add-on. Top-level 
+add-ons are listed in the Project Description text on the Share Extras front page. </p>
+
+<p>The Project Owners will decide whether a sandboxed add-on should be promoted. Typical criteria for 
+promotion include, but are not limited to the following. </p>
+
+<ul>
+<li><p>An acceptable project name has been defined and this is consistent across all add-on files </p></li>
+<li><p>An appropriate source tree layout has been defined, consistent with the 
+<a href="https://github.com/share-extras/sdk-sample-dashlet">Sample Dashlet</a> project, 
+including the latest stock Ant build script <tt>build.xml</tt> and library dependencies from that project</p></li>
+<li><p>All code to be consistent with the Alfresco 
+<a href="http://wiki.alfresco.com/wiki/Coding_Standards" rel="nofollow">Coding Standards</a>, specifically 
+using 4-space tabbing, spaces instead of tabs and braces generally on new lines within JavaScript and Java code. </p></li>
+<li><p>A <tt>MAINTAINERS.txt</tt> and <tt>README.txt</tt> file exist in the add-on's base directory and contain 
+complete and relevant information for the add-on </p></li>
+<li><p>All add-on files must be packaged in an appropriate directory structure and should avoid the use of 
+Alfresco-reserved packages (e.g. <tt>org/alfresco</tt> for web scripts) in most cases. The package 
+<tt>org/sharextras</tt> can be used as a base package. </p></li>
+<li><p>No core Alfresco or Share files should be duplicated or replaced by files within the add-on </p></li>
+<li><p>Web scripts may be overridden only where required in order to implement the capabilities of the add-on.
+Where overridden only modified files should exist in the add-on source tree. </li>
+<li><p>Client-side files should be placed inside a project-specific directory, usually <tt>extras/components</tt>, 
+and not in the base <tt>components</tt> or <tt>modules</tt> directories used by the core Share files </li>
+<li><p>Client-side JavaScript should be normally be implemented in dedicated classes within the <tt>Extras</tt> or 
+<tt>Extras.dashlet</tt> namespaces, using the standard Share pattern utilising 
+<a href="http://developer.yahoo.com/yui/yahoo/#extend" rel="nofollow">YAHOO.lang.extend</a>. JSDoc comments 
+should be used to document classes and all public variables and functions. </p></li>
+<li><p>All strings appearing in the add-on UI must be externalised in message bundles </p></li>
+<li><p>It must be possible to package all add-on files in a single JAR file, using the 
+<a href="https://github.com/share-extras/sdk-sample-dashlet">Sample Dashlet</a> build script, and the 
+build should run without errors </li><li>No other files outside of the JAR file should be required in order 
+for the add-on to function, aside from additional configuration which should be documented clearly </p></li>
+<li><p>No errors should occur during start-up of the repository or Share web applications with the add-on installed </p></li>
+<li><p>A wiki page has been defined documenting the add-on with screen shots, installation instructions, 
+build instructions and known issues documented </p></li>
+<li><p>The add-on should function without errors, and should have been tested, in recent versions of Firefox, 
+Google Chrome and Internet Explorer </p></li>
+<li><p>No issues tagged with Priority-Medium or higher relating to the add-on should be open </p></li>
+</ul>
+
+<p>The Project Owners may decide to remove a sandboxed add-on which has not been promoted within a reasonable time. </p>
 </div>
