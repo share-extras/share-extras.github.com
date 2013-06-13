@@ -1,0 +1,38 @@
+---
+title: Share Extras - SDK
+layout: default
+---
+<div class="row-fluid">
+<h1>Share Extras SDK</h1>
+<p>The Share Extras SDK provides a number of sample projects that you can use as templates to build your 
+own add-ons.</p>
+
+<p>All sample projects share a common folder structure for organising your repository, web-tier and 
+client-side customisations. Apache Ant is used to build and deploy the files in standard formats.</p>
+
+<p>Before you start using the projects, you will want to ensure you have a 
+<a href="https://github.com/share-extras/share-extras.github.com/wiki/Development-Environment">Development Environment</a> 
+set up. Most Share Extras projects use Eclipse, and therefore the projects provide Eclipse project 
+definitions for your use, although you are not required to use Eclipse.</p>
+
+<p>The following sample projects are part of the Share Extras SDK.</p>
+
+</div>
+<div class="row-fluid">
+  {% assign pcount = 0 %}
+  {% for page in site.pages %}
+  {% if page.category == "sdk-project" and page.projectdesc|size > 0 and page.projectname != 'share-extras.github.com' %}
+  {% assign pcount =  pcount | plus:1 %}
+  {% capture moduloo %}{{ pcount | modulo:3 }}{% endcapture %}
+  <div class="span4">
+    <h2>{{ page.projecttitle }}</h2>
+    <p>{{ page.projectdesc }}</p>
+    <p><a class="btn" href="{{ page.projectname }}/">View details &raquo;</a></p>
+  </div><!--/span-->
+    {% if moduloo == '0' %}
+    </div>
+    <div class="row-fluid">
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+</div><!--/row-->
