@@ -3,7 +3,7 @@
             <p class="header">{{ page.projectdesc }}</p>
             {% assign types = page.dltypes | split:',' %}
             {% for type in types %}
-            <p><a class="btn btn-primary download buttons" href="https://github.com/share-extras/{{page.projectname}}/zipball/master"><span>Download {{ type || upcase }}</span></a></p>
+            <p><a class="btn btn-primary download buttons" href="https://github.com/share-extras/{{page.projectname}}/releases"><span>Download Latest Release</span></a></p>
             {% endfor %}
             <p><a class="btn btn-primary download buttons github" href="https://github.com/share-extras/{{page.projectname}}"><span>View On GitHub</span></a></p>
             <p class="header">Contributors: {{page.contributors}}</p>
