@@ -31,15 +31,18 @@ def update_repos(repos):
                     os.mkdir('%s/%s' % (dirname, repo_name))
             # Create page placeholder - contains YAML front-matter only, content is included later from README.md
             yaml = []
-            # Read in the existing content
-            indexf = open('%s/%s/index.html' % (dirname, repo_name), 'r')
-            lines = indexf.readlines()
-            for line in lines:
-                if len(line.strip()) > 0:
-                    kv = line.strip().split(':', 1)
-                    if len(kv) == 2:
-                        yaml.append((kv[0].strip(), kv[1].strip()))
-            indexf.close()
+            # Read in the existing content, if it exists
+            try:
+                indexf = open('%s/%s/index.html' % (dirname, repo_name), 'r')
+                lines = indexf.readlines()
+                for line in lines:
+                    if len(line.strip()) > 0:
+                        kv = line.strip().split(':', 1)
+                        if len(kv) == 2:
+                            yaml.append((kv[0].strip(), kv[1].strip()))
+                indexf.close()
+            except IOError, e: # File does not exist
+                pass
             # Write the file
             indexf = open('%s/%s/index.html' % (dirname, repo_name), 'w')
             # New values
