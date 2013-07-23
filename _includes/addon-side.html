@@ -2,9 +2,10 @@
             <h1 class="header">{{ page.projecttitle }} by Share Extras</h1>
             <p class="header">{{ page.projectdesc }}</p>
             {% assign types = page.dltypes | split:',' %}
-            {% for type in types %}
             <p><a class="btn btn-primary download buttons" href="https://github.com/share-extras/{{page.projectname}}/releases"><span>Download Latest Release</span></a></p>
-            {% endfor %}
-            <p><a class="btn btn-primary download buttons github" href="https://github.com/share-extras/{{page.projectname}}"><span>View On GitHub</span></a></p>
+            {% if page.addonurl %}
+            <p><a class="btn btn-primary download buttons" href="{{page.addonurl}}"><span>View on Add-ons</span></a></p>
+            {% endif %}
+            <p><a class="btn btn-primary download buttons github" href="https://github.com/share-extras/{{page.projectname}}"><span>View on GitHub</span></a></p>
             <p class="header">Contributors: {{page.contributors}}</p>
           </div><!--/.well -->
