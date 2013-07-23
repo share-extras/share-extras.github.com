@@ -30,7 +30,19 @@ def update_repos(repos):
             if not os.path.exists('%s/%s' % (dirname, repo_name)):
                     os.mkdir('%s/%s' % (dirname, repo_name))
             # Create page placeholder - contains YAML front-matter only, content is included later from README.md
+            yaml = []
+            # Read in the existing content
+            indexf = open('%s/%s/index.html' % (dirname, repo_name), 'r')
+            lines = indexf.readlines()
+            for line in lines:
+                if len(line.strip()) > 0:
+                    kv = line.strip().split(':', 1)
+                    if len(kv) == 2:
+                        yaml.append((kv[0].strip(), kv[1].strip()))
+            indexf.close()
+            # Write the file
             indexf = open('%s/%s/index.html' % (dirname, repo_name), 'w')
+            # New values
             fm = {
                     'category': 'addon' if not is_sdk else 'sdk-project',
                     'projectname': str(repo_name),
@@ -43,7 +55,15 @@ def update_repos(repos):
                     'updated_at': str(r['updated_at']),
                     'pushed_at': str(r['pushed_at'])
             }
-            indexf.write("---\n" + "\n".join(['%s: %s' % (k, v) for (k, v) in fm.items()]) + "\n---\n" + '{%% include %s/%s/README.md %%}' % (dirname, repo_name))
+            # Overwrite any items
+            for (k, v) in fm.items():
+                for i in range(len(yaml)):
+                    if k == yaml[i][0]:
+                        yaml[i] = (k, v)
+                        break
+                else:
+                     yaml.append((k, v))
+            indexf.write("---\n" + "\n".join(['%s: %s' % (k, v) for (k, v) in yaml]) + "\n---\n" + '{%% include %s/%s/README.md %%}' % (dirname, repo_name))
             indexf.close()
             # Create includes container
             if not os.path.exists('_includes/%s/%s' % (dirname, repo_name)):
