@@ -16,9 +16,9 @@ You should also update the information in `README.txt` and `MAINTAINERS.txt` to 
 
 ###Project Web Scripts
 
-All admin console projects will define one `admin-console` family web-tier [http://wiki.alfresco.com/wiki/Web_Scripts web script] for each component, but may also use additional web-tier scripts, or repository scripts for loading data.
+All admin console projects will define one `admin-console` family web-tier [web script](http://wiki.alfresco.com/wiki/Web_Scripts) for each component, but may also use additional web-tier scripts, or repository scripts for loading data.
 
-The `admin-console` family web script is mandatory and the example component is implemented using the web script provided below `config/alfresco/site-webscripts`. You can modify this script as you require, but you should also rename the web script file names, update the `org/mycompany' package and change the web script URL (specified in the `.desc.xml` file) to something unique for your project.
+The `admin-console` family web script is mandatory and the example component is implemented using the web script provided below `config/alfresco/site-webscripts`. You can modify this script as you require, but you should also rename the web script file names, update the `org/mycompany` package and change the web script URL (specified in the `.desc.xml` file) to something unique for your project.
 
 The project supports any number of additional repository-tier and web-tier web scripts. The scripts must be added in the following directories below `config`.
 

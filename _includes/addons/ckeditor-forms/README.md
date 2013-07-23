@@ -61,7 +61,7 @@ Use the http://share-extras.googlecode.com/svn/trunk/CKEditor%20Form%20Control/s
 
 #### Loading Forms Dependencies
 
-The `ckeditor-form-control.jar` includes configuration to load javascript [http://wiki.alfresco.com/wiki/Forms#dependencies dependencies]. However if you have other configuration in a custom config file this may overwrite this configuration. __Only do this step if CKEditor fails to load.__
+The `ckeditor-form-control.jar` includes configuration to load javascript [dependencies](http://wiki.alfresco.com/wiki/Forms#dependencies). However if you have other configuration in a custom config file this may overwrite this configuration. __Only do this step if CKEditor fails to load.__
 
     <config>
         <forms>
