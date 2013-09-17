@@ -13,8 +13,8 @@ Installation
 ------------
 
 The component has been developed to install on top of an existing Alfresco
-4.0, 4.1 or 4.2 installation. The javascript-console-repo-<version>.amp or
-javascript-console-share-<version>.amp needs to be installed into the Alfresco
+4.0, 4.1 or 4.2 installation. The `javascript-console-repo-<version>.amp` or
+`javascript-console-share-<version>.amp` needs to be installed into the Alfresco
 Repository / Share webapp using the Alfresco Module Management Tool:
 
     java -jar alfresco-mmt.jar install javascript-console-repo-<version>.amp /path/to/alfresco.war
@@ -33,10 +33,10 @@ project directory:
 
     mvn install
 
-The command builds two JAR files named javascript-console-repo-<version>.jar / 
-javascript-console-share-<version>.jar and javascript-console-repo-<version>-sources.jar /
-javascript-console-share-<version>-sources.jar as well as javascript-console-repo-<version>.amp /
-javascript-console-share-<version>.amp in the 'target' directory within your project.
+The command builds two JAR files named `javascript-console-repo-<version>.jar` / 
+`javascript-console-share-<version>.jar` and `javascript-console-repo-<version>-sources.jar` /
+`javascript-console-share-<version>-sources.jar` as well as `javascript-console-repo-<version>.amp` /
+`javascript-console-share-<version>.amp` in the `target` directory within your project.
 
 If you want to build the module so it can be installed and run in an Alfresco 4.0 / 4.1 server
 running on Java 6 you need to have a Java 6 JDK available. Either make sure that your JDK 6 is set
