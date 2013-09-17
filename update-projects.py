@@ -1,3 +1,12 @@
+#! /usr/bin/env python
+# update-projects.py
+
+"""
+Import a site definition and site content from the local file system.
+
+Usage: python update-projects.py [project1 [project2] ...]
+"""
+
 import json
 import urllib
 import urllib2, base64
@@ -5,6 +14,7 @@ import os, os.path
 import getpass
 import sys
 import types
+import getopt
 
 dl_screenshots = False
 username = raw_input('Enter GitHub username: ')
@@ -17,16 +27,19 @@ opener.addheaders = [('Authorization', 'Basic %s' % base64string), ('User-Agent'
 # Install the opener.
 urllib2.install_opener(opener)
 
+def usage():
+    print __doc__
+
 def fetch_contributors(pname):
 	contributors = json.loads(opener.open('https://api.github.com/repos/%s/contributors' % (pname)).read())
 	names = [ '<a href="%s">%s</a>' % (c['html_url'], c['login']) for c in contributors ]
 	return ', '.join(names)
 
-def update_repos(repos):
+def update_repos(repos, dl_screenshots=False):
     for r in repos:
-        update_repo(r)
+        update_repo(r, dl_screenshots)
 
-def update_repo(r):
+def update_repo(r, dl_screenshots=False):
     repo_name = r['name']
     print repo_name
     is_sdk = str(repo_name).startswith('sdk-')
@@ -101,13 +114,13 @@ def update_repo(r):
             except Exception, e:
                     pass
 
-def process(url):
+def process(url, dl_screenshots=False):
     resp = urllib2.urlopen(url)
     data = json.loads(resp.read())
     if isinstance(data, types.ListType):
-        update_repos(data)
+        update_repos(data, dl_screenshots)
     else:
-        update_repo(data)
+        update_repo(data, dl_screenshots)
     # Check if there is another page
     links = resp.info().getheader('Link')
     if links is not None:
@@ -115,10 +128,29 @@ def process(url):
         if 'next' in linkslist:
             process(linkslist['next'])
 
+projects = [ p for p in sys.argv[1:] if not p.startswith('-') ]
+options = [ o for o in sys.argv[1:] if o.startswith('-') ]
+
 if len(sys.argv) > 1:
-    for p in sys.argv[1:]:
-        if not p.startswith('-'):
-            process('https://api.github.com/repos/share-extras/{0}'.format(p))
+
+    # Process options
+    try:
+        opts, args = getopt.getopt(options, "h", ["help", "dl-screenshots"])
+    except getopt.GetoptError, e:
+        usage()
+        sys.exit(1)
+
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            usage()
+            sys.exit()
+        elif opt == "--dl-screenshots":
+            dl_screenshots = True
+
+if len(projects) > 0:
+    # Go through projects, if specified
+    for p in projects:
+        process('https://api.github.com/repos/share-extras/{0}'.format(p), dl_screenshots=dl_screenshots)
 else:
-    process('https://api.github.com/orgs/share-extras/repos')
+    process('https://api.github.com/orgs/share-extras/repos', dl_screenshots=dl_screenshots)
 
