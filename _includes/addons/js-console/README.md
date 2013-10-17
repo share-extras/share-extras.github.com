@@ -1,20 +1,47 @@
-
-Javascript Console Admin Console component for Alfresco 3.4/4.0
+Javascript Console Admin Console component for Alfresco 4.0-4.2
 ===============================================================
 
-Author: Florian Maul (fme AG)
+Author: Florian Maul (fme AG)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jens Goldhammer (fme AG)
 
 This project contains a Javascript Console component for the Alfresco Share's 
 Administration Console, that enables the execution of arbitrary javascript code 
 in the repository. 
+
+Watch the video
+--------
+
+https://www.youtube.com/watch?v=c3JIeVY8Nnk
+
+New Features
+--------
+
++ autocomplete with tern.js
+
++ new json output view for validation and formatting json from the freemarker template processing
+![JSONView](https://raw.github.com/jgoldhammer/js-console/master/javascript-console-share/screenshots/json_output_view.png) 
+
++ JSHint integration in javascript editor- it validates input on the fly and integrates the alfresco root objects like search, node...
+![JSHINT](https://raw.github.com/jgoldhammer/js-console/master/javascript-console-share/screenshots/jshint_live_integration.png) 
+
++ performance statistics - displays overall time, time for javascript and freemarker processing, time for network and time for rest of the server side processing 
+![PERFORMANCE](https://raw.github.com/jgoldhammer/js-console/master/javascript-console-share/screenshots/performance_stats.png) 
+
++ Editor Theming - allows you to theme the javascript and freemarker codemirror editor
+![Editor themes](https://raw.github.com/jgoldhammer/js-console/master/javascript-console-share/screenshots/editor_themes.png)
+
++ better error marking of server runtime errors in the editors
+![Error](https://raw.github.com/jgoldhammer/js-console/master/javascript-console-share/screenshots/js_error_detection_and_marking.png)
+
++ update codemirror to version 3 and enabling many codemirror addons(activeline, hightlight selection, new autocomplete module)
 
 
 Installation
 ------------
 
 The component has been developed to install on top of an existing Alfresco
-4.0, 4.1 or 4.2 installation. The `javascript-console-repo-<version>.amp` or
-`javascript-console-share-<version>.amp` needs to be installed into the Alfresco
+4.0, 4.1 or 4.2 installation. The javascript-console-repo-<version>.amp or
+javascript-console-share-<version>.amp needs to be installed into the Alfresco
 Repository / Share webapp using the Alfresco Module Management Tool:
 
     java -jar alfresco-mmt.jar install javascript-console-repo-<version>.amp /path/to/alfresco.war
@@ -33,10 +60,10 @@ project directory:
 
     mvn install
 
-The command builds two JAR files named `javascript-console-repo-<version>.jar` / 
-`javascript-console-share-<version>.jar` and `javascript-console-repo-<version>-sources.jar` /
-`javascript-console-share-<version>-sources.jar` as well as `javascript-console-repo-<version>.amp` /
-`javascript-console-share-<version>.amp` in the `target` directory within your project.
+The command builds two JAR files named javascript-console-repo-<version>.jar / 
+javascript-console-share-<version>.jar and javascript-console-repo-<version>-sources.jar /
+javascript-console-share-<version>-sources.jar as well as javascript-console-repo-<version>.amp /
+javascript-console-share-<version>.amp in the 'target' directory within your project.
 
 If you want to build the module so it can be installed and run in an Alfresco 4.0 / 4.1 server
 running on Java 6 you need to have a Java 6 JDK available. Either make sure that your JDK 6 is set
