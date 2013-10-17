@@ -16,17 +16,6 @@ import sys
 import types
 import getopt
 
-dl_screenshots = False
-username = raw_input('Enter GitHub username: ')
-password = getpass.getpass('Enter GitHub password: ')
-agent = 'curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5'
-
-opener = urllib2.build_opener(urllib2.HTTPSHandler(debuglevel=0))
-base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
-opener.addheaders = [('Authorization', 'Basic %s' % base64string), ('User-Agent', agent)]
-# Install the opener.
-urllib2.install_opener(opener)
-
 def usage():
     print __doc__
 
@@ -128,6 +117,13 @@ def process(url, dl_screenshots=False):
         if 'next' in linkslist:
             process(linkslist['next'])
 
+dl_screenshots = False
+username = None
+password = None
+agent = 'curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5'
+
+opener = urllib2.build_opener(urllib2.HTTPSHandler(debuglevel=0))
+
 projects = [ p for p in sys.argv[1:] if not p.startswith('-') ]
 options = [ o for o in sys.argv[1:] if o.startswith('-') ]
 
@@ -135,7 +131,7 @@ if len(sys.argv) > 1:
 
     # Process options
     try:
-        opts, args = getopt.getopt(options, "h", ["help", "dl-screenshots"])
+        opts, args = getopt.getopt(options, "h", ["help", "dl-screenshots", "user=", "token="])
     except getopt.GetoptError, e:
         usage()
         sys.exit(1)
@@ -146,6 +142,20 @@ if len(sys.argv) > 1:
             sys.exit()
         elif opt == "--dl-screenshots":
             dl_screenshots = True
+        elif opt == "--user":
+            username = arg
+        elif opt == "--token":
+            password = arg
+
+if username is None:
+    username = raw_input('Enter GitHub username: ')
+if password is None:
+    password = getpass.getpass('Enter GitHub password: ')
+
+base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
+opener.addheaders = [('Authorization', 'Basic %s' % base64string), ('User-Agent', agent)]
+# Install the opener.
+urllib2.install_opener(opener)
 
 if len(projects) > 0:
     # Go through projects, if specified
