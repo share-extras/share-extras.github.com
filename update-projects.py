@@ -16,6 +16,8 @@ import sys
 import types
 import getopt
 
+repos_blacklist = ['book', 'share-extras.github.com']
+
 def usage():
     print __doc__
 
@@ -26,7 +28,8 @@ def fetch_contributors(pname):
 
 def update_repos(repos, dl_screenshots=False):
     for r in repos:
-        update_repo(r, dl_screenshots)
+        if r['name'] not in repos_blacklist:
+            update_repo(r, dl_screenshots)
 
 def update_repo(r, dl_screenshots=False):
     repo_name = r['name']
