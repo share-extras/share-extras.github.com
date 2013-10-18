@@ -2,7 +2,7 @@
 # update-projects.py
 
 """
-Import a site definition and site content from the local file system.
+Update a Jekyll site using information pulled from the GitHub API
 
 Usage: python update-projects.py [project1 [project2] ...]
 """
