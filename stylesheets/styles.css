@@ -47,3 +47,31 @@ a.github span {
 	text-align: center;
 	margin-top: 1em;
 }
+
+.container-fluid {
+        margin-top: 0.5em;
+}
+
+.span9 h1, .row-fluid > h1 {
+        margin-top: 0.5em;
+        padding-bottom: 0.25em;
+        margin-bottom: 0.75em;
+        border-bottom: 1px solid #f0f0f0;
+}
+
+.container-fluid .hero-unit {
+        padding: 30px 40px;
+}
+
+.container-fluid .hero-unit h1 {
+        margin-top: 0;
+}
+
+.container-fluid .hero-unit p {
+        margin: 10px 0 0 0;
+}
+
+.span9 > h2, .row-fluid > h2,
+.span9 > h3, .row-fluid > h3 {
+        margin: 20px 0;
+}
