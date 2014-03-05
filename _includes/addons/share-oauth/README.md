@@ -25,3 +25,13 @@ To install the component, copy the two files into your Alfresco installation, an
 
   * Copy `share-oauth/target/share-oauth.jar` into `tomcat/webapps/share/WEB-INF/lib`
   * Copy `share-oauth-repo/target/share-oauth-repo.jar` into `tomcat/webapps/alfresco/WEB-INF/lib`
+
+Debugging
+---------
+
+You can use the following log4j settings to capture information on the live requests which are being proxied by the connector.
+
+    log4j.logger.org.sharextras.webscripts.OAuth2Return=DEBUG
+    log4j.logger.org.sharextras.webscripts.connector=DEBUG
+    log4j.logger.org.apache.commons.httpclient=DEBUG
+    log4j.logger.httpclient.wire=DEBUG
