@@ -15,7 +15,9 @@ Building and Installing
 Use Maven to build the JAR file, which you can then install into the Tomcat instance where you have the Share webapp deployed
 
     mvn clean package && \
-      cp target/myalfresco-dashlets-1.0-SNAPSHOT.jar <TOMCAT_HOME>/webapps/share/WEB-INF/lib
+      cp myalfresco-dashlets/target/myalfresco-dashlets-1.0-SNAPSHOT.jar <TOMCAT_HOME>/webapps/share/WEB-INF/lib
+
+If you prefer to install an AMP file, you can find this in the `myalfresco-dashlets-amp` subdirectory.
 
 There is no need to install any repository-side component, but as mentioned in _Pre-requisites_ above, you must have already installed Share OAuth as detailed in that project.
 
