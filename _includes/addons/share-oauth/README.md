@@ -26,6 +26,15 @@ To install the component, copy the two files into your Alfresco installation, an
   * Copy `share-oauth/target/share-oauth.jar` into `tomcat/webapps/share/WEB-INF/lib`
   * Copy `share-oauth-repo/target/share-oauth-repo.jar` into `tomcat/webapps/alfresco/WEB-INF/lib`
 
+Repository API
+--------------
+
+A small set of web scripts are provided in the repository component to allow the connector to get and set OAuth tokens as needed.
+
+It should not normally be necessary to call these APIs directly, but in the event of tokens becoming corrupted or to force a re-authorization from the provider, a `DELETE` script allows them to be removed. This can be invoked using Curl, e.g.
+
+    curl http://localhost:8080/alfresco/s/extras/oauth2/token/<token-name> -u admin:admin -X DELETE
+
 Debugging
 ---------
 
