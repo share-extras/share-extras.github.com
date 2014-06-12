@@ -5,7 +5,7 @@ Author: Will Abson
 
 This project defines three custom dashlets which you can use to interact with Twitter from within Alfresco Share.
 
-**The dashlets require Alfresco 4.0 or greater, plus the [Share OAuth add-on](https://github.com/share-extras/share-oauth), version 2.3.0 or greater.**
+**The dashlets require Alfresco 4.0 or greater, plus the [Share OAuth](https://github.com/share-extras/share-oauth) add-on version 2.2 (Alfresco 4.0) or v2.3.0 (Alfresco 4.1+).**
 
 The *Twitter Feed dashlet* displays recent Tweets from a Twitter user or list of your choice.
 
